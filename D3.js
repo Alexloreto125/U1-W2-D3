@@ -120,9 +120,8 @@ console.log(charactersNames);
 */
 let femaleCharacters = [];
 for (let i = 0; i < starWarsCharacters.length; i++) {
-  charactersNames.push(starWarsCharacters[i].name);
   if (starWarsCharacters[i].gender === "female") {
-    femaleCharacters.push(starWarsCharacters[i].name);
+    femaleCharacters.push(starWarsCharacters[i]);
   }
 }
 console.log("I personaggi femminili sono ", femaleCharacters);
@@ -154,7 +153,8 @@ let eyeColor = {
       break;
     case "red":
       eyeColor.red.push(starWarsCharacters[i]);
-    default:
+      break;
+    case "blue-gray":
       eyeColor["blue-gray"].push(starWarsCharacters[i]);
   }
 }
@@ -207,7 +207,43 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "charactersNames" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
 */
-
+// console.log(charactersNames.length); // 10
+// for (let i = 0; i < charactersNames.length; i++) {
+//   for (let j = 0; j < femaleCharacters.length; j++) {
+//     if (charactersNames[i] === femaleCharacters[j].name) {
+//       charactersNames.splice(i, 1);
+//     }
+//   }
+// }
+// console.log(charactersNames.length);
+console.log(femaleCharacters);
+console.log(charactersNames.length);
+// dobbiamo rimuovere da qui dentro i nomi corrispondenti alle due donne
+for (let i = 0; i < charactersNames.length; i++) {
+  // per ognuno dei nomi in charactersNames...
+  for (let j = 0; j < femaleCharacters.length; j++) {
+    // per ognuno dei nomi in femaleCharacters...
+    if (charactersNames[i] === femaleCharacters[j].name) {
+      // abbiamo trovato un nome da eliminare in charactersNames!
+      charactersNames.splice(i, 1); // elimino 1 elemento!
+    }
+  }
+}
+console.log(charactersNames); // un array di nomi maschilista
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
+
+ 
 */
+
+Math.floor(Math.random() * 10);
+const randomIndex = Math.floor(Math.random() * 10);
+const randomC = starWarsCharacters[randomIndex];
+console.log(
+  "il nome è ",
+  randomC.name,
+  "peso",
+  randomC.mass,
+  "ho gli occhi di colore ",
+  randomC.eye_color
+);
